@@ -23,8 +23,9 @@ public class SensorDataController {
     public ResponseEntity<List<SensorData>> getSensorMeasures(
             @RequestParam(required = false) Long startDate,
             @RequestParam(required = false) Long endDate,
-            @RequestParam(required = false) String sensorType
+            @RequestParam(required = false) String sensorType,
+            @RequestParam(required = false) String location
     ) {
-        return new ResponseEntity<>(service.getFilteredData(startDate, endDate, sensorType), HttpStatus.OK);
+        return new ResponseEntity<>(service.getFilteredData(startDate, endDate, sensorType, location), HttpStatus.OK);
     }
 }

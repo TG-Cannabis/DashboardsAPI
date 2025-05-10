@@ -12,7 +12,7 @@ import java.util.List;
 public class SensorDataService {
     private final SensorDataRepository sensorDataRepository;
 
-    public List<SensorData> getFilteredData(Long startDate, Long endDate, String sensorType) {
-        return sensorDataRepository.findFiltered(startDate, endDate, sensorType);
+    public List<SensorData> getFilteredData(Long startDate, Long endDate, String sensorType, String location) {
+        return sensorDataRepository.findFiltered(startDate, endDate, sensorType, location);
     }
 }

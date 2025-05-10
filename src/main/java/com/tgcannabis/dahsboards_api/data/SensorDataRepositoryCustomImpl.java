@@ -15,7 +15,11 @@ class SensorDataRepositoryCustomImpl implements SensorDataRepositoryCustom {
     private final MongoTemplate template;
 
     @Override
-    public List<SensorData> findFiltered(Long startDate, Long endDate, String sensorType) {
+    public List<SensorData> findFiltered(
+            Long startDate,
+            Long endDate,
+            String sensorType,
+            String location) {
         List<Criteria> criteria = new ArrayList<>();
 
         if (startDate != null && endDate != null) {
@@ -26,6 +30,10 @@ class SensorDataRepositoryCustomImpl implements SensorDataRepositoryCustom {
 
         if (sensorType != null) {
             criteria.add(Criteria.where("sensorType").is(sensorType));
+        }
+
+        if (location != null) {
+            criteria.add(Criteria.where("location").is(location));
         }
 
         Query query = new Query();
