@@ -10,17 +10,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class SensorDataService {
-    private final SensorDataRepository repository;
+    private final SensorDataRepository sensorDataRepository;
 
     public List<SensorData> getFilteredData(Long startDate, Long endDate, String sensorType) {
-        if (startDate != null && endDate != null && sensorType != null) {
-            return repository.findByDateRangeAndSensorType(startDate, endDate, sensorType);
-        } else if (startDate != null && endDate != null) {
-            return repository.findByDateRange(startDate, endDate);
-        } else if (sensorType != null) {
-            return repository.findBySensorType(sensorType);
-        } else {
-            return repository.findAll();
-        }
+        return sensorDataRepository.findFiltered(startDate, endDate, sensorType);
     }
 }
