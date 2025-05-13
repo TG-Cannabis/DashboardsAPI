@@ -8,10 +8,9 @@
         <version>3.4.5</version>
         <relativePath/>
     </parent>
-
     <groupId>com.tgcannabis</groupId>
     <artifactId>DahsboardsAPI</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>DahsboardsAPI</name>
     <description>DahsboardsAPI</description>
 
