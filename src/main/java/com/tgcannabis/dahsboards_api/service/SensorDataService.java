@@ -1,6 +1,7 @@
 package com.tgcannabis.dahsboards_api.service;
 
 import com.tgcannabis.dahsboards_api.data.SensorDataRepository;
+import com.tgcannabis.dahsboards_api.model.AvailableTags;
 import com.tgcannabis.dahsboards_api.model.SensorData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,12 @@ public class SensorDataService {
         }
 
         return sensorDataRepository.findFiltered(startDate, endDate, sensorType, location);
+    }
+
+    public AvailableTags getAvailableTags() {
+        return AvailableTags.builder()
+                .sensorTypes(sensorDataRepository.findDistinctSensorTypes())
+                .locations(sensorDataRepository.findDistinctLocations())
+                .build();
     }
 }

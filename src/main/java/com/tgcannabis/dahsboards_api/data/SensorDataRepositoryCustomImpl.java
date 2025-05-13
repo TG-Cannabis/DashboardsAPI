@@ -1,6 +1,7 @@
 package com.tgcannabis.dahsboards_api.data;
 
 import com.tgcannabis.dahsboards_api.model.SensorData;
+import com.tgcannabis.dahsboards_api.service.SensorDataService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -42,5 +43,21 @@ class SensorDataRepositoryCustomImpl implements SensorDataRepositoryCustom {
         }
 
         return template.find(query, SensorData.class);
+    }
+
+    @Override
+    public List<String> findDistinctSensorTypes() {
+        return template.query(SensorData.class)
+                .distinct("sensorType")
+                .as(String.class)
+                .all();
+    }
+
+    @Override
+    public List<String> findDistinctLocations() {
+        return template.query(SensorData.class)
+                .distinct("location")
+                .as(String.class)
+                .all();
     }
 }

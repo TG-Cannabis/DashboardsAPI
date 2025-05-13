@@ -6,4 +6,6 @@ import java.util.List;
 
 interface SensorDataRepositoryCustom {
     List<SensorData> findFiltered(Long startDate, Long endDate, String sensorType, String location);
+    List<String> findDistinctSensorTypes();
+    List<String> findDistinctLocations();
 }
