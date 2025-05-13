@@ -19,8 +19,8 @@ public class SensorDataController {
     @GetMapping
     @CrossOrigin
     public ResponseEntity<List<SensorData>> getSensorMeasures(
-            @RequestParam(required = false) Long startDate,
-            @RequestParam(required = false) Long endDate,
+            @RequestParam(required = false) String startDate,
+            @RequestParam(required = false) String endDate,
             @RequestParam(required = false) String sensorType,
             @RequestParam(required = false) String location
     ) {
